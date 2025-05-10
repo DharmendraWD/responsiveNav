@@ -121,11 +121,7 @@
             display: block !important;
             } */
 
-        #resources,
-        #publication,
-        #vacancyContent,
-        #aboutUs {
-            /* display: none; */
+        .dropDownSpace {
             background-color: var(--submenu-bg);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 
@@ -136,6 +132,21 @@
             border-top: none;
             padding: 15px;
         }
+
+        /* #resources,
+        #publication,
+        #vacancyContent,
+        #aboutUs {
+            background-color: var(--submenu-bg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+            position: static;
+            width: 100%;
+            margin: 20px auto;
+            border-radius: 0;
+            border-top: none;
+            padding: 15px;
+        } */
 
 
         /* #resources.active {
@@ -361,13 +372,13 @@
 
         @media(min-width:1001px) {
 
-            .whatWeDoMenuContent {
+            /* .whatWeDoMenuContent {
                 position: absolute !important;
                 width: 95vw !important;
                 left: 50% !important;
                 transform: translateX(-50%) !important;
 
-            }
+            } */
 
             .gridForAboutUsNavContent {
                 display: grid;
@@ -375,9 +386,7 @@
                 gap: 23px;
             }
 
-            #resources,
-            #publication,
-            #aboutUs {
+            .dropDownSpace {
                 position: absolute !important;
                 width: 95vw !important;
                 left: 50% !important;
@@ -412,11 +421,11 @@
         <button class="mobile-menu-btn" id="mobileNavBtn">☰</button>
 
         <ul class="nav-menu" id="navMenu">
-            <li class="nav-item"><a href="#" class="nav-link" data-target="home">Home</a></li>
-            <li class="nav-item">
-                <a href="#" class="nav-link navFistMenu" data-target="aboutus">About Us <span
-                        class="arrowDownSecCode">&#11167;</span></a>
-                <div class="aboutUs dNone" id="aboutUs">
+            <li class="nav-item"><a href="#">Home</a></li>
+            <!-- ABOUT US  -->
+            <li class="nav-item navLinkLi">
+                <a href="#" class="nav-link navFistMenu">About Us <span class="arrowDownSecCode">&#11167;</span></a>
+                <div class="dropDownSpace dNone" id="megaMenu1">
                     <div class="menu-grid" id="menuGrid">
                         <!-- hohsptial and clinic  -->
                         <div class="menu-section">
@@ -453,10 +462,9 @@
             </li>
 
             <!-- WHAT WE DO  -->
-            <li class="nav-item">
-                <a href="#" class="nav-link navFistMenu" data-target="what-we-do">What we do <span
-                        class="arrowDownSecCode">&#11167;</span></a>
-                <div class="whatWeDoMenuContent dNone" id="what-we-do-content">
+            <li class="nav-item navLinkLi">
+                <a href="#" class="nav-link navFistMenu">What we do <span class="arrowDownSecCode">&#11167;</span></a>
+                <div class="dropDownSpace dNone" id="megaMenu2">
                     <div class="menu-grid" id="menuGrid">
                         <!-- hohsptial and clinic  -->
                         <div class="menu-section">
@@ -554,10 +562,9 @@
             </li>
 
             <!-- RESOURCES  -->
-            <li class="nav-item">
-                <a href="#" class="nav-link navFistMenu" data-target="resources">Resources <span
-                        class="arrowDownSecCode">&#11167;</span></a>
-                <div class="dNone" id="resources">
+            <li class="nav-item navLinkLi">
+                <a href="#" class="nav-link navFistMenu">Resources <span class="arrowDownSecCode">&#11167;</span></a>
+                <div class="dropDownSpace dNone">
                     <div class="menu-grid" id="menuGrid">
                         <!-- hohsptial and clinic  -->
                         <div class="menu-section">
@@ -643,10 +650,9 @@
             </li>
 
             <!-- PUBLICATION  -->
-            <li class="nav-item">
-                <a href="#" class="nav-link navFistMenu" data-target="publication">Publication <span
-                        class="arrowDownSecCode">&#11167;</span></a>
-                <div class="dNone" id="publication">
+            <li class="nav-item navLinkLi">
+                <a href="#" class="nav-link navFistMenu">Publication <span class="arrowDownSecCode">&#11167;</span></a>
+                <div class="dNone dropDownSpace">
                     <div class="menu-grid" id="menuGrid">
                         <!-- Weekely News & Update  -->
                         <div class="menu-section">
@@ -741,10 +747,9 @@
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a href="#" class="nav-link navFistMenu" data-target="vacancy">Vacancy <span
-                        class="arrowDownSecCode">&#11167;</span></a>
-                <div class="dNone" id="vacancyContent">
+            <li class="nav-item navLinkLi">
+                <a href="#" class="nav-link navFistMenu">Vacancy <span class="arrowDownSecCode">&#11167;</span></a>
+                <div class="dNone dropDownSpace" id="vacancyContent">
                     <div class="menu-grid" id="menuGrid">
                         <!-- Weekely News & Update  -->
                         <div class="menu-section">
@@ -760,7 +765,7 @@
                 </div>
             </li>
 
-            <li class="nav-item"><a href="#" class="nav-link" data-target="gallery">Gallery</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Gallery</a></li>
         </ul>
     </nav>
 
@@ -792,171 +797,58 @@
                 navMenu.classList.toggle('active');
             });
 
-            // hide nav menu when click on outside of menu itself 
-            NavParentDiv.addEventListener('click', () => {
-                if (event.target === NavParentDiv) {
-                    if (
-                        !resourcesContent.classList.contains('dNone') ||
-                        !publication.classList.contains('dNone') ||
-                        !vacancyContent.classList.contains('dNone') ||
-                        !whatwedoNavcontent.classList.contains('dNone') ||
-                        !aboutUs.classList.contains('dNone')
-                    ) {
-                        resourcesContent.classList.add('dNone');
-                        publication.classList.add('dNone');
-                        vacancyContent.classList.add('dNone');
-                        whatwedoNavcontent.classList.add('dNone');
-                        aboutUs.classList.add('dNone');
-                    }
 
-                    // Remove 'active' class from all navLinks
-                    navLinks.forEach(link => {
-                        link.style.color = 'black'; // Reset color if using inline styles
-                    });
-
-
-                }
-            })
 
 
             // Nav link click handler
-            const navLinks = document.querySelectorAll('.nav-link');
-
-            // when clicked on any menu then change its color 
-            function setActiveLink(navLinks) {
-                navLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        // Remove 'active' class from all navLinks
-                        navLinks.forEach(link => {
-                            link.style.color = ''; // Reset color if using inline styles
-                        });
-                        link.style.color = 'blue'; // Set color to red for active link
-                    });
-                });
-            }
+            const navLinks = document.querySelectorAll('.navLinkLi');
 
             navLinks.forEach(link => {
                 link.addEventListener('click', function (e) {
                     e.preventDefault();
-                    const target = this.getAttribute('data-target');
-                    const navItem = this.parentElement;
 
-                    // Toggle active class for the clicked link
-                    this.classList.toggle('active');
-
-                    setActiveLink(navLinks);
-
+                    console.log("object");
                     // Handle desktop vs mobile behavior
-                    if (window.innerWidth > 1000) {
-                        if (target === 'what-we-do') {
-                            // Hide other section if visible
-                            if (!resourcesContent.classList.contains('dNone') || !publication.classList.contains('dNone') || !vacancyContent.classList.contains('dNone') || !aboutUs.classList.contains('dNone')) {
-                                resourcesContent.classList.add('dNone');
-                                publication.classList.add('dNone');
-                                vacancyContent.classList.add('dNone');
-                                aboutUs.classList.add('dNone');
-                            }
 
-                            whatwedoNavcontent.classList.toggle('dNone');
-                        }
-                        else if (target === 'resources') {
-                            if (!whatwedoNavcontent.classList.contains('dNone') || !publication.classList.contains('dNone') || !vacancyContent.classList.contains('dNone') || !aboutUs.classList.contains('dNone')) {
-                                publication.classList.add('dNone');
-                                whatwedoNavcontent.classList.add('dNone');
-                                vacancyContent.classList.add('dNone');
-                                aboutUs.classList.add('dNone');
-                            }
+                    let clickedMenuOfNavBar = e.currentTarget;  //get clicked navMenu Instance (LI)
+                    let dropdownToBeShowOnClick = e.currentTarget.querySelector('.dropDownSpace'); // get dropdownnContent of clicked Li's inside.
+                    dropdownToBeShowOnClick.classList.toggle("dNone")  //toggle Dropdown content show/ide
 
-                            resourcesContent.classList.toggle('dNone');
-                        }
-                        else if (target === 'publication') {
-                            if (!whatwedoNavcontent.classList.contains('dNone') || !resourcesContent.classList.contains('dNone') || !vacancyContent.classList.contains('dNone') || !aboutUs.classList.contains('dNone')) {
-                                resourcesContent.classList.add('dNone');
-                                whatwedoNavcontent.classList.add('dNone');
-                                aboutUs.classList.add('dNone');
-                                vacancyContent.classList.add('dNone');
-                            }
 
-                            publication.classList.toggle('dNone');
-                        }
-                        else if (target === 'vacancy') {
-                            if (!whatwedoNavcontent.classList.contains('dNone') || !resourcesContent.classList.contains('dNone') || !publication.classList.contains('dNone') || !aboutUs.classList.contains('dNone')) {
-                                resourcesContent.classList.add('dNone');
-                                whatwedoNavcontent.classList.add('dNone');
-                                publication.classList.add('dNone');
-                                aboutUs.classList.add('dNone');
-                            }
 
-                            vacancyContent.classList.toggle('dNone');
-                        }
-                        else if (target === 'aboutus') {
-                            if (!whatwedoNavcontent.classList.contains('dNone') || !resourcesContent.classList.contains('dNone') || !publication.classList.contains('dNone') || !vacancyContent.classList.contains('dNone')) {
-                                resourcesContent.classList.add('dNone');
-                                whatwedoNavcontent.classList.add('dNone');
-                                publication.classList.add('dNone');
-                                vacancyContent.classList.add('dNone');
-                            }
 
-                            aboutUs.classList.toggle('dNone');
-                        }
-                    }
 
-                    else {
-                        // Mobile behavior
-                        if (target === 'what-we-do') {
-                            whatwedoNavcontent.classList.toggle('active');
-
-                        }
-                        else if (target === 'resources') {
-                            resourcesContent.classList.toggle('dNone');
-                        }
-                        else if (target === 'vacancy') {
-                            vacancyContent.classList.toggle('dNone');
-
-                        }
-                        else if (target === 'publication') {
-                            publication.classList.toggle('dNone');
-
-                        }
-                        else if (target === 'aboutus') {
-                            aboutUs.classList.toggle('dNone');
-
-                        }
-
-                    }
-
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 1000) {
-                        // Don't close menu when clicking submenu items
-                        if (!this.classList.contains('active')) {
-                            // navMenu.classList.remove('active');
-                        }
-                    }
                 });
             });
 
             // Content section toggle functionality
-            const sectionTitles = document.querySelectorAll('.section-title');
+            const menuSection = document.querySelectorAll('.menu-section');
 
             function checkScreenSize() {
                 if (window.innerWidth <= 1000) {
                     // Mobile/tablet behavior
-                    sectionTitles.forEach(title => {
-                        title.addEventListener('click', function () {
-                            const content = this.nextElementSibling;
-                            this.classList.toggle('active');
-                            content.classList.toggle('active');
+                    menuSection.forEach(title => {
+                        title.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            event.stopPropagation()
+
+                            // const content = this.nextElementSibling;
+                            // this.classList.toggle('active');
+                            // console.log(title.currentTarget.querySelector('.section-content'));
+                            let dropDownSectionCOntent = e.currentTarget.querySelector('.section-content');
+                            dropDownSectionCOntent.classList.toggle('active');
+
                         });
                     });
                 } else {
                     // Desktop behavior - remove all event listeners
-                    sectionTitles.forEach(title => {
-                        title.classList.remove('active');
-                        const content = title.nextElementSibling;
-                        content.classList.remove('active');
-                        // Clone the element to remove event listeners
-                        const newTitle = title.cloneNode(true);
-                        title.parentNode.replaceChild(newTitle, title);
+                    menuSection.forEach(title => {
+                        // title.classList.remove('active');
+                        // const content = title.nextElementSibling;
+                        // content.classList.remove('active');
+                        // // Clone the element to remove event listeners
+                        // const newTitle = title.cloneNode(true);
+                        // title.parentNode.replaceChild(newTitle, title);
                     });
                 }
             }
@@ -966,6 +858,7 @@
 
             // Check on resize
             window.addEventListener('resize', checkScreenSize);
+            console.log("object");
         });
     </script>
 </body>
